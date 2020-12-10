@@ -1,3 +1,4 @@
+import platform
 import os
 import glob
 import json
@@ -5,19 +6,24 @@ import requests
 
 # configurable settings >>
 only_funded_address = 0
-USERNAME = "os_username"
 # configurable settings <<
 
+USERNAME = os.getlogin()
+# print(USERNAME)
 
-osname = os.name
-if osname == "nt":
+system = platform.system()
+# print(system)
+
+if system == "Windows":
     path = "C:\\Users\\" + USERNAME + "\\AppData\\Roaming\\CloudChains\\settings"
-elif osname == "posix":
+elif system == "Linux":
     path = "/home/" + USERNAME + "/.config/CloudChains/settings/"
+elif system == "Darwin":
+    path = "/" + USERNAME + "/library/application support/CloudChains/settings/"
+else:
+    print("no valid os detected, exiting")
+    exit()
 
-
-# need a third case for mac users
-# print(path)
 
 def instruct_wallet(method, params):
     url = "http://127.0.0.1:" + str(rpc_port) + "/"
@@ -34,7 +40,7 @@ def instruct_wallet(method, params):
 
 def rpc_call(command, parameter=[]):
     result = instruct_wallet(command, parameter)
-    if result['error'] != None:
+    if result['error'] is not None:
         raise Exception(result['error'])
     else:
         return result['result']
@@ -71,7 +77,7 @@ for filename in glob.glob(os.path.join(path, '*.json')):
         f = open(filename)
         config = json.load(f)
         f.close()
-        if config["rpcEnabled"] == True:
+        if config["rpcEnabled"]:
             rpc_password = config["rpcPassword"]
             rpc_user = config["rpcUsername"]
             rpc_port = config["rpcPort"]
