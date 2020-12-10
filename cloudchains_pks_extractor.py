@@ -8,18 +8,18 @@ import requests
 only_funded_address = 0
 # configurable settings <<
 
-USERNAME = os.getlogin()
-# print(USERNAME)
+username = os.getlogin()
+# print(username)
 
 system = platform.system()
 # print(system)
 
 if system == "Windows":
-    path = "C:\\Users\\" + USERNAME + "\\AppData\\Roaming\\CloudChains\\settings"
+    path = "C:\\Users\\" + username + "\\AppData\\Roaming\\CloudChains\\settings"
 elif system == "Linux":
-    path = "/home/" + USERNAME + "/.config/CloudChains/settings/"
+    path = "/home/" + username + "/.config/CloudChains/settings/"
 elif system == "Darwin":
-    path = "/" + USERNAME + "/library/application support/CloudChains/settings/"
+    path = "/" + username + "/library/application support/CloudChains/settings/"
 else:
     print("no valid os detected, exiting")
     exit()
