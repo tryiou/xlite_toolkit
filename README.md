@@ -1,5 +1,5 @@
 # cloudchains_pks_extractor
-Script to extract addresses and associated private keys from xlite/cloudchains cryptocurrency wallet
+Script to extract addresses and associated private keys from xlite/cloudchains cryptocurrency wallet\
 need python3+ installed, and pip
 
 usage:
