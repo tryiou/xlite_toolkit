@@ -19,7 +19,7 @@ if system == "Windows":
 elif system == "Linux":
     path = "/home/" + username + "/.config/CloudChains/settings/"
 elif system == "Darwin":
-    path = "/" + username + "/library/application support/CloudChains/settings/"
+    path = "/Users/" + username + "/Library/Application Support/CloudChains/settings"
 else:
     print("no valid os detected, exiting")
     exit()
