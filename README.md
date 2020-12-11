@@ -5,7 +5,8 @@ need python3+ installed, and pip
 usage:
 <pre>
 clone repo with:
-  git clone https://github.com/tryiou/cloudchains_pks_extractor.git 
+  git clone https://github.com/tryiou/cloudchains_pks_extractor.git
+or download/extract repo from web, then
   cd cloudchains_pks_extractor
   pip install -r requirements.txt   #(pip3 on ubuntu)
 edit cloudchains_pks_extractor.py file:
