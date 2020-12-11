@@ -32,10 +32,9 @@ def instruct_wallet(method, params):
     try:
         response = requests.request("POST", url, data=payload, headers=headers, auth=(rpc_user, rpc_password))
         return json.loads(response.text)
-    except requests.exceptions.RequestException as e:
-        print(e)
     except:
-        print('No response from Wallet, check xlite is running on this machine')
+        print('No response from wallet, check xlite/cc is running on this machine')
+        exit()
 
 
 def rpc_call(command, parameter=[]):
