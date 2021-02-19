@@ -5,7 +5,7 @@ import json
 import requests
 
 # configurable settings >>
-only_funded_address = 0
+only_funded_address = 1
 # configurable settings <<
 
 username = os.getlogin()
@@ -69,16 +69,17 @@ def list_pks():
                     last = each['address']
 
 
-print("formatage: \n\nCOIN\naddress : privatekey\n")
-for filename in glob.glob(os.path.join(path, '*.json')):
-    if "config-master.json" not in filename:
-        print(filename[filename.find("-") + 1:-5])
-        f = open(filename)
-        config = json.load(f)
-        f.close()
-        if config["rpcEnabled"]:
-            rpc_password = config["rpcPassword"]
-            rpc_user = config["rpcUsername"]
-            rpc_port = config["rpcPort"]
-            list_pks()
-        print('')
+if __name__ == "__main__":
+    print("formatage: \n\nCOIN\naddress : privatekey\n")
+    for filename in glob.glob(os.path.join(path, '*.json')):
+        if "config-master.json" not in filename:
+            print(filename[filename.find("-") + 1:-5])
+            f = open(filename)
+            config = json.load(f)
+            f.close()
+            if config["rpcEnabled"]:
+                rpc_password = config["rpcPassword"]
+                rpc_user = config["rpcUsername"]
+                rpc_port = config["rpcPort"]
+                list_pks()
+            print('')
