@@ -34,7 +34,7 @@ def instruct_wallet(method, params):
         return json.loads(response.text)
     except:
         print('No response from wallet, check xlite/cc is running on this machine')
-        exit()
+        # exit()
 
 
 def rpc_call(command, parameter=[]):
