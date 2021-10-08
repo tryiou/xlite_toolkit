@@ -25,47 +25,35 @@ else:
     exit()
 
 
-def instruct_wallet(method, params):
+def instruct_wallet(method, params=[]):
+    # print("instruct_wallet(", method, ",", params, ")")
     url = "http://127.0.0.1:" + str(rpc_port) + "/"
     payload = json.dumps({"method": method, "params": params})
-    headers = {'content-type': "application/json", 'cache-control': "no-cache"}
+    headers = requests.utils.default_headers()
+    auth = (rpc_user, rpc_password)
     try:
-        response = requests.request("POST", url, data=payload, headers=headers, auth=(rpc_user, rpc_password))
-        return json.loads(response.text)
+        response = json.loads(requests.request("POST", url, data=payload, headers=headers, auth=auth).text)['result']
     except:
         print('No response from wallet, check xlite/cc is running on this machine')
-        # exit()
-
-
-def rpc_call(command, parameter=[]):
-    result = instruct_wallet(command, parameter)
-    if result['error'] is not None:
-        raise Exception(result['error'])
-    else:
-        return result['result']
+        response = None
+    return response
 
 
 def list_pks():
     if rpc_port > 0:
         if only_funded_address == 0:
-            try:
-                get_addresses = rpc_call('getaddressesbyaccount', ["main"])
-            except Exception as e:
-                print(e)
-            else:
+            get_addresses = instruct_wallet('getaddressesbyaccount', ["main"])
+            if get_addresses:
                 for address in get_addresses:
-                    privkey = rpc_call('dumpprivkey', [address])
+                    privkey = instruct_wallet('dumpprivkey', [address])
                     print(address, ":", privkey)
         else:
-            try:
-                list_unspent = rpc_call('listunspent', [])
-            except Exception as e:
-                print(e)
-            else:
+            list_unspent = instruct_wallet('listunspent', [])
+            if list_unspent:
                 last = ""
                 for each in list_unspent:
                     if each['address'] != last:
-                        print(each['address'], ":", rpc_call('dumpprivkey', [each['address']]))
+                        print(each['address'], ":", instruct_wallet('dumpprivkey', [each['address']]))
                     last = each['address']
 
 
@@ -73,7 +61,7 @@ if __name__ == "__main__":
     print("formatage: \n\nCOIN\naddress : privatekey\n")
     for filename in glob.glob(os.path.join(path, '*.json')):
         if "config-master.json" not in filename:
-            print(filename[filename.find("-") + 1:-5])
+            coin = filename[filename.find("-") + 1:-5]
             f = open(filename)
             config = json.load(f)
             f.close()
@@ -81,5 +69,6 @@ if __name__ == "__main__":
                 rpc_password = config["rpcPassword"]
                 rpc_user = config["rpcUsername"]
                 rpc_port = config["rpcPort"]
+                print(coin)
                 list_pks()
             print('')
