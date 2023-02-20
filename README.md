@@ -9,7 +9,6 @@ clone repo with:
   git clone https://github.com/tryiou/cloudchains_pks_extractor.git
 or download/extract repo from web, then
   cd cloudchains_pks_extractor
-  pip install -r requirements.txt      #(pip3 on ubuntu)
 edit cloudchains_pks_extractor.py file:
   only_funded_address = False          #(False print all the address list, True print only address with funds)
 run the script with:
