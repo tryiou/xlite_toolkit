@@ -13,6 +13,6 @@ or download/extract repo from web, then
 edit cloudchains_pks_extractor.py file:
   only_funded_address = False          #(False print all the address list, True print only address with funds)
 run the script with:
-  python cloudchains_pks_extractor.py (python3 on ubuntu)
+  python cloudchains_pks_extractor.py #(python3 on ubuntu)
 script will print on terminal owned address list for every enabled coins and associated PKs
 </pre>
