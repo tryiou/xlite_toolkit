@@ -67,14 +67,14 @@ def is_xlite_daemon_running():
 
 
 if __name__ == '__main__':
-    with open('wallet_password.json') as f:
-        xlite_password = json.load(f)
     external_daemon = True
     if not is_xlite_daemon_running():
         external_daemon = False
+        with open('wallet_password.json') as f:
+            xlite_password = json.load(f)
         process = run_bin(xlite_password)
     print('only_funded_address:', only_funded_address)
-    print('\nformatage: \n\nCOIN\naddress : privatekey\n')
+    print('\nformat: \n\nCOIN\naddress : privatekey\n')
     files = os.listdir(path)
     for file in files:
         if file.endswith('.json') and file != 'config-master.json':
