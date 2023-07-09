@@ -90,10 +90,10 @@ def execute_binary(binary_path, arguments):
         # Handle any exceptions that occur during the execution
         print('Error:', e)
         return None
+
+
 def kill_bin(process):
     print('Closing xlite-daemon')
     process.terminate()
-#    process.send_signal(subprocess.signal.SIGINT)
+    #    process.send_signal(subprocess.signal.SIGINT)
     process.wait()
-
-

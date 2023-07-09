@@ -12,7 +12,6 @@
 
 
 import os
-import glob
 import json
 import sys
 from func_defs import rpc_call, get_settings_folder
@@ -62,8 +61,8 @@ if __name__ == '__main__':
     for file in files:
         if file.endswith('.json') and file != 'config-master.json':
             file_path = os.path.join(path, file)
-   # for filename in glob.glob(os.path.join(path, '*.json')):
-    #    if 'config-master.json' not in filename and 'null' not in filename:
+            # for filename in glob.glob(os.path.join(path, '*.json')):
+            #    if 'config-master.json' not in filename and 'null' not in filename:
             file_without_extension = file.split('.')[0]  # Get the part before the first dot
             file_parts = file_without_extension.split('-')  # Split the name using hyphens
             coin = file_parts[-1]
