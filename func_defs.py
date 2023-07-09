@@ -5,12 +5,13 @@ import platform
 import os
 import subprocess
 import sys
-import datetime
 
 
 def rpc_call(method, params, url, rpc_user, rpc_password, rpc_port, display=False):
     max_retries = 5
     retry_delay = 5
+    timeout = 10  # Default timeout in seconds
+
     url = url + ':' + str(rpc_port) + '/'
     payload = json.dumps({'method': method, 'params': params})
     headers = {"Content-Type": "application/json"}
@@ -21,7 +22,7 @@ def rpc_call(method, params, url, rpc_user, rpc_password, rpc_port, display=Fals
 
     for retry in range(max_retries):
         try:
-            response = requests.request('POST', url, data=payload, headers=headers, auth=auth)
+            response = requests.request('POST', url, data=payload, headers=headers, auth=auth, timeout=timeout)
             response.raise_for_status()  # Raise an exception for non-2xx status codes
             response_json = response.json()
 
