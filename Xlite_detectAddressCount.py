@@ -82,6 +82,7 @@ def search_for_funds(settings_folder, increment):
                                 print()
                                 if not ('utxos' in getutxos):
                                     print('not ("utxos" in getutxos)')
+                                    kill_bin(process)
                                     break
                                 else:
                                     if len(getutxos['utxos']) == 0:
