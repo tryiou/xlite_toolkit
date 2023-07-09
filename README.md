@@ -38,6 +38,11 @@ usage:
 Script to detect past usage on a mnemonic and set addressCount correctly for Xlite/xlite-daemon:\
 Restart Xlite/Xlite-daemon to apply new count.
 
+-This script need user to set his Xlite password into the file 'wallet_password.json'\
+-This script need 'xlite-daemon' or 'xlite-daemon.exe' placed in the script directory\
+latest binaries can be found on 
+https://github.com/blocknetdx/xlite-daemon/releases
+
 usage:
 <pre>
 # run the script with:
