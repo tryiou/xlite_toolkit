@@ -25,7 +25,7 @@ Script to extract addresses and associated private keys from Xlite/xlite-daemon 
 Print on terminal
 
 -script scan for Xlite/xlite-daemon in background, if not found case, try to run local daemon:\
-  -if not found case:
+  -if not found case:\
   -This script need user to set his Xlite password into the file 'wallet_password.json'.\
   -This script need 'xlite-daemon' or 'xlite-daemon.exe' placed in the script directory.\ 
 
