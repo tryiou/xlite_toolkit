@@ -96,6 +96,12 @@ if __name__ == '__main__':
                     list_pks()
                 except Exception as e:
                     print("Error:", e)
+                    system = platform.system()
+                    # anomaly with windows when running daemon as subprocess ?
+                    if system == 'Windows' and not external_daemon:
+                        kill_bin(process)
+                        if not is_xlite_daemon_running():
+                            process = run_bin(xlite_password)
             print('')
     if not external_daemon:
         kill_bin(process)

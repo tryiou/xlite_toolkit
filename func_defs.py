@@ -8,9 +8,9 @@ import sys
 
 
 def rpc_call(method, params, url, rpc_user, rpc_password, rpc_port, display=False):
-    max_retries = 5
+    max_retries = 4
     retry_delay = 5
-    timeout = 10  # Default timeout in seconds
+    timeout = 5  # Default timeout in seconds
 
     url = url + ':' + str(rpc_port) + '/'
     payload = json.dumps({'method': method, 'params': params})
