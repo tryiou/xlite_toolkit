@@ -6,6 +6,7 @@ https://github.com/blocknetdx/xlite-daemon/ \
 https://docs.blocknet.org/xlite/setup/
 
 Written with python3.
+Tested on Windows10 & Ubuntu22.04LTS
 
 Various scripts to interact with Xlite/xlite-daemon
 
