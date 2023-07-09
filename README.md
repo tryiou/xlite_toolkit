@@ -57,7 +57,7 @@ Usage:
 </pre>
 
 # Xlite_detectAddressCount.py
-Script to detect past usage on a mnemonic and set addressCount correctly for Xlite/xlite-daemon:\
+Script to detect past funded addresses on a mnemonic and set addressCount correctly for Xlite/xlite-daemon:\
 Restart Xlite/Xlite-daemon to apply new count.
 
 -This script need any other instance of Xlite or xlite-daemon closed before run.\
