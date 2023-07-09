@@ -92,7 +92,10 @@ if __name__ == '__main__':
                 rpc_user = config['rpcUsername']
                 rpc_port = config['rpcPort']
                 print(coin)
-                list_pks()
+                try:
+                    list_pks()
+                except Exception as e:
+                    print("Error:", e)
             print('')
     if not external_daemon:
         kill_bin(process)
