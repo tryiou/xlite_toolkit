@@ -58,10 +58,16 @@ def list_pks():
 if __name__ == '__main__':
     print('only_funded_address:', only_funded_address)
     print('\nformatage: \n\nCOIN\naddress : privatekey\n')
-    for filename in glob.glob(os.path.join(path, '*.json')):
-        if 'config-master.json' not in filename and 'null' not in filename:
-            coin = filename[filename.find('-') + 1:-5]
-            f = open(filename)
+    files = os.listdir(path)
+    for file in files:
+        if file.endswith('.json') and file != 'config-master.json':
+            file_path = os.path.join(path, file)
+   # for filename in glob.glob(os.path.join(path, '*.json')):
+    #    if 'config-master.json' not in filename and 'null' not in filename:
+            file_without_extension = file.split('.')[0]  # Get the part before the first dot
+            file_parts = file_without_extension.split('-')  # Split the name using hyphens
+            coin = file_parts[-1]
+            f = open(file_path)
             config = json.load(f)
             f.close()
             if config['rpcEnabled']:
