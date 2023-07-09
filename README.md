@@ -16,7 +16,7 @@ Usage:
 # clone repo with:
   git clone https://github.com/tryiou/xlite_toolkit
   cd xlite_toolkit
-  pip install requests
+  pip install -r requirements.txt
 </pre>
 
 
