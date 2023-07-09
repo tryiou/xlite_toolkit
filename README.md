@@ -2,6 +2,7 @@
 
 https://xlitewallet.com/ \
 https://github.com/blocknetdx/xlite/ \
+https://github.com/blocknetdx/xlite-daemon/ \
 https://docs.blocknet.org/xlite/setup/
 
 Written with python3.
