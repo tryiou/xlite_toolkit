@@ -4,11 +4,9 @@ https://xlitewallet.com/ \
 https://github.com/blocknetdx/xlite/ \
 https://docs.blocknet.org/xlite/setup/
 
-python scripts toolkit 
+Written with python3.
 
-written with python3
-
-
+Various scripts to interact with Xlite/xlite-daemon
 
 usage:
 <pre>
