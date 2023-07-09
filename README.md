@@ -21,6 +21,8 @@ usage:
 Script to extract addresses and associated private keys from Xlite/xlite-daemon wallet:\
 Print on terminal
 
+-Need a running Xlite/xlite-daemon in background\
+
 usage:
 <pre>
 # run the script with:
@@ -30,6 +32,18 @@ usage:
 # script will print on terminal owned address list for every enabled coins and associated PKs
 #   true print only address with funds.
 #   false print every address from list.
+</pre>
+
+# Xlite_changeAddressCount.py
+Script to set addressCount for every coins of Xlite/xlite-daemon:\
+Restart Xlite/Xlite-daemon to apply new count.
+
+usage:
+<pre>
+# run the script with:
+  python Xlite_changeAddressCount.py 25
+
+# argument is a int, addressCount to set, default at 20 if not provided.
 </pre>
 
 # Xlite_detectAddressCount.py
@@ -48,16 +62,4 @@ usage:
   python Xlite_detectAddressCount.py 25
 
 # argument is a int, number of addresses per batch to test, default at 20 if not provided.
-</pre>
-
-# Xlite_changeAddressCount.py
-Script to set addressCount for every coins of Xlite/xlite-daemon:\
-Restart Xlite/Xlite-daemon to apply new count.
-
-usage:
-<pre>
-# run the script with:
-  python Xlite_changeAddressCount.py 25
-
-# argument is a int, addressCount to set, default at 20 if not provided.
 </pre>
