@@ -14,7 +14,10 @@
 import os
 import json
 import sys
-from func_defs import rpc_call, get_settings_folder
+import platform
+import psutil
+
+from func_defs import rpc_call, get_settings_folder, run_bin, kill_bin
 
 # Default value
 only_funded_address = True
@@ -54,7 +57,22 @@ def list_pks():
                         print(address, ':', privkey['result'])
 
 
+def is_xlite_daemon_running():
+    binary_name = 'xlite-daemon.exe' if platform.system() == 'Windows' else 'xlite-daemon'
+
+    for proc in psutil.process_iter(['name']):
+        if proc.info['name'] == binary_name:
+            return True
+    return False
+
+
 if __name__ == '__main__':
+    with open('wallet_password.json') as f:
+        xlite_password = json.load(f)
+    external_daemon = True
+    if not is_xlite_daemon_running():
+        external_daemon = False
+        process = run_bin(xlite_password)
     print('only_funded_address:', only_funded_address)
     print('\nformatage: \n\nCOIN\naddress : privatekey\n')
     files = os.listdir(path)
@@ -76,3 +94,5 @@ if __name__ == '__main__':
                 print(coin)
                 list_pks()
             print('')
+    if not external_daemon:
+        kill_bin(process)
