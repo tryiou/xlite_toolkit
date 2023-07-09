@@ -38,8 +38,9 @@ Usage:
   python Xlite_privateKeysExtractor.py true
   python Xlite_privateKeysExtractor.py false
 
-# script will print on terminal owned address list for every enabled coins and associated PKs
-#   true print only addresses with funds, default at true if not provided.
+# script will print on terminal owned address list for every enabled coins and associated PKs.
+# argument is a boolean, default at true if not provided.
+#   true print only addresses with funds.
 #   false print every addresses from list.
 </pre>
 
