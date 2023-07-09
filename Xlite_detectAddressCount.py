@@ -32,7 +32,7 @@ def set_address_count(coin, address_count, settings_folder):
 def search_for_funds(settings_folder, increment):
     final_result = {}
     with open('wallet_password.json') as f:
-        wallet_password = json.load(f)
+        xlite_password = json.load(f)
     files = os.listdir(settings_folder)
     for file in files:
         if file.endswith('.json') and file != 'config-master.json':
@@ -57,7 +57,7 @@ def search_for_funds(settings_folder, increment):
                     done = False
                     while not done:
                         counter += 1
-                        process = run_bin(wallet_password)  # Start a new process
+                        process = run_bin(xlite_password)  # Start a new process
                         getaddressesbyaccount = rpc_call('getaddressesbyaccount',
                                                          ['main'], 'http://127.0.0.1',
                                                          rpc_user,

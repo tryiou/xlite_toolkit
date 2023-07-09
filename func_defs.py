@@ -56,7 +56,7 @@ def get_settings_folder():
         raise Exception('Unsupported operating system: ' + system)
 
 
-def run_bin(spv_pass):
+def run_bin(xlite_pass):
     print('Starting xlite-daemon')
     script_dir = os.path.dirname(os.path.abspath(__file__))
     system = platform.system()
@@ -73,7 +73,7 @@ def run_bin(spv_pass):
         sys.exit(1)
 
     arguments = []
-    os.environ['WALLET_PASSWORD'] = spv_pass['spv']
+    os.environ['WALLET_PASSWORD'] = xlite_pass['xlite_pass']
     # Execute the binary and detach it
     process = execute_binary(binary_path, arguments)
     time.sleep(1)
