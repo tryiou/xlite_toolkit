@@ -28,7 +28,7 @@ Print on terminal
   -if not found case:\
   -This script need user to set his Xlite password into the file 'wallet_password.json'.\
   -This script need 'xlite-daemon' or 'xlite-daemon.exe' placed in the script directory.\ 
-Latest binaries can be found on 
+Latest binaries can be found on \
 https://github.com/blocknetdx/xlite-daemon/releases
 
 Usage:
