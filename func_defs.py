@@ -80,12 +80,6 @@ def run_bin(xlite_pass):
     return process
 
 
-def kill_bin(process):
-    print('Closing xlite-daemon')
-    process.send_signal(subprocess.signal.SIGINT)
-    process.wait()
-
-
 def execute_binary(binary_path, arguments):
     try:
         # Start the process and detach it
@@ -96,3 +90,10 @@ def execute_binary(binary_path, arguments):
         # Handle any exceptions that occur during the execution
         print('Error:', e)
         return None
+def kill_bin(process):
+    print('Closing xlite-daemon')
+    process.terminate()
+#    process.send_signal(subprocess.signal.SIGINT)
+    process.wait()
+
+
