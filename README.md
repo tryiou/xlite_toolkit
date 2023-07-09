@@ -9,7 +9,7 @@ Written with python3.
 
 Various scripts to interact with Xlite/xlite-daemon
 
-usage:
+Usage:
 <pre>
 # install git, python if missing, open a terminal,
 # clone repo with:
@@ -22,9 +22,9 @@ usage:
 Script to extract addresses and associated private keys from Xlite/xlite-daemon wallet:\
 Print on terminal
 
--Need a running Xlite/xlite-daemon in background\
+-Need a running Xlite/xlite-daemon in background
 
-usage:
+Usage:
 <pre>
 # run the script with:
   python Xlite_privateKeysExtractor.py true
@@ -39,7 +39,7 @@ usage:
 Script to set addressCount for every coins of Xlite/xlite-daemon:\
 Restart Xlite/Xlite-daemon to apply new count.
 
-usage:
+Usage:
 <pre>
 # run the script with:
   python Xlite_changeAddressCount.py 25
@@ -52,12 +52,12 @@ Script to detect past usage on a mnemonic and set addressCount correctly for Xli
 Restart Xlite/Xlite-daemon to apply new count.
 
 -This script need any other instance of Xlite or xlite-daemon closed before run.\
--This script need user to set his Xlite password into the file 'wallet_password.json'\
--This script need 'xlite-daemon' or 'xlite-daemon.exe' placed in the script directory\
-latest binaries can be found on 
+-This script need user to set his Xlite password into the file 'wallet_password.json'.\
+-This script need 'xlite-daemon' or 'xlite-daemon.exe' placed in the script directory.\
+Latest binaries can be found on 
 https://github.com/blocknetdx/xlite-daemon/releases
 
-usage:
+Usage:
 <pre>
 # run the script with:
   python Xlite_detectAddressCount.py 25
