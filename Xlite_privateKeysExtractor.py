@@ -17,7 +17,7 @@ import sys
 import platform
 import psutil
 
-from func_defs import rpc_call, get_settings_folder, run_bin, kill_bin
+from func_defs import rpc_call, get_settings_folder, run_bin, kill_bin, is_xlite_daemon_running
 
 # Default value
 only_funded_address = True
@@ -55,15 +55,6 @@ def list_pks():
                     privkey = rpc_call('dumpprivkey', [address], 'http://127.0.0.1', rpc_user, rpc_password, rpc_port)
                     if 'result' in privkey:
                         print(address, ':', privkey['result'])
-
-
-def is_xlite_daemon_running():
-    binary_name = 'xlite-daemon.exe' if platform.system() == 'Windows' else 'xlite-daemon'
-
-    for proc in psutil.process_iter(['name']):
-        if proc.info['name'] == binary_name:
-            return True
-    return False
 
 
 if __name__ == '__main__':

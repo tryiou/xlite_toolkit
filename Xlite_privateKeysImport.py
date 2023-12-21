@@ -16,7 +16,7 @@ import sys
 import platform
 import psutil
 
-from func_defs import rpc_call, get_settings_folder, run_bin, kill_bin
+from func_defs import rpc_call, get_settings_folder, run_bin, kill_bin, is_xlite_daemon_running
 
 # Default value
 only_funded_address = True
@@ -29,16 +29,6 @@ if len(sys.argv) > 1:
         only_funded_address = False
 
 path = get_settings_folder()
-
-
-def is_xlite_daemon_running():
-    binary_name = 'xlite-daemon.exe' if platform.system() == 'Windows' else \
-        'xlite-daemon-linux64' if platform.system() == 'Linux' else 'xlite-daemon-osx64'
-    for proc in psutil.process_iter(['name']):
-        if proc.info['name'] == binary_name:
-            return True
-    return False
-
 
 if __name__ == '__main__':
     external_daemon = True

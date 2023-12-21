@@ -5,6 +5,16 @@ import platform
 import os
 import subprocess
 import sys
+import psutil
+
+
+def is_xlite_daemon_running():
+    binary_name = 'xlite-daemon.exe' if platform.system() == 'Windows' else \
+        'xlite-daemon-linux64' if platform.system() == 'Linux' else 'xlite-daemon-osx64'
+    for proc in psutil.process_iter(['name']):
+        if proc.info['name'] == binary_name:
+            return True
+    return False
 
 
 def rpc_call(method, params, url, rpc_user, rpc_password, rpc_port, display=False):
@@ -63,9 +73,11 @@ def run_bin(xlite_pass):
     system = platform.system()
 
     if system == 'Windows':
-        binary_name = 'xlite-daemon.exe'
+        binary_name = 'xlite-daemon-win64.exe'
+    elif system == 'Linux':
+        binary_name = 'xlite-daemon-linux64'
     else:
-        binary_name = 'xlite-daemon'
+        binary_name = 'xlite-daemon-osx64'
 
     binary_path = os.path.join(script_dir, binary_name)
 
